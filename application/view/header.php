@@ -11,8 +11,5 @@
     <h1 id="header">PHP Logger</h1>
     <div class="navigation">
         <a href="<?php echo URL; ?>">Start</a>
-        <a href="<?php echo URL; ?>start/page">Page</a>
-        <a href="<?php echo URL; ?>songs">Songs</a>
-        <a href="<?php echo URL; ?>login">Login</a>
-        <a href="<?php echo URL; ?>register">Register</a>
+        <a href="<?php echo URL; ?>start/manager">Log Manager</a>
     </div>

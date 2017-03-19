@@ -21,15 +21,71 @@ class Start extends Controller
         require APP . 'view/footer.php';
     }
 
-    /**
-     * This method handles what happens when you move to http://yourproject/home/exampleone
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
-     */
-    public function page()
+    public function manager()
     {
-        // load views
         require APP . 'view/header.php';
-        require APP . 'view/start/page.php';
+        require APP . 'view/start/login.php';
         require APP . 'view/footer.php';
+    }
+
+    public function login()
+    {
+        var_dump($_GET);
+
+        if (isset($_POST['login_btn']))
+        {
+            try
+            {
+                $username = trim(stripslashes(htmlspecialchars($_POST['lg_username'])));
+                $password = trim(stripslashes(htmlspecialchars($_POST['lg_password'])));
+
+                $user = $this->dbModel->getUser($username);
+                if ($this->authenticate($user, $password))
+                {
+                    // It should be enough to regenerate the session id to mitigate attacks
+                    session_regenerate_id();
+
+                    // Set user session and redirect
+                    $_SESSION['user'] = $user['username'];
+
+                    // Unset credentials from database request and $_POST
+                    unset($user['salt']);
+                    unset($user['password']);
+                    unset($_POST);
+
+                    // Redirects to manager: http://domain.com/manager
+                    header('location:' . URL . 'manager');
+                }
+            }
+            catch (Exception $exception)
+            {
+                $this->logModel->logException('Login failed', $exception);
+                header('location:' . URL . 'problem');
+            }
+        }
+    }
+
+    private function authenticate($user, $password)
+    {
+        if (!$user) {
+            throw new Exception('Incorrect username');
+        }
+
+        $hashed_pass = hash('sha256', $password . $user['salt']);
+        for ($round = 0; $round < 65536; $round++)
+        {
+            $hashed_pass = hash('sha256', $hashed_pass . $user['salt']);
+        }
+
+        if ($hashed_pass !== $user['password'])
+        {
+            throw new Exception('Incorrect password.');
+        }
+        return true;
+    }
+
+    public function process()
+    {
+
     }
 }
