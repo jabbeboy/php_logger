@@ -1,5 +1,5 @@
     <div class="footer">
-        Template Footer <a href="#">Link to some site</a>
+        PHP Logger @ <a href="http://www.jwango.com">jwango.com</a>
     </div>
 </body>
 </html>

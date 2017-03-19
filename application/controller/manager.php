@@ -20,22 +20,54 @@ class Manager extends Controller
      * view uses and prints out in tables.
      * If no session is set, redirects to login
      */
-    public function logList()
+    public function menu()
     {
         $addresses = $this->dbModel->getAddresses();
         $sessions = $this->dbModel->getSessions();
 
         require APP . 'view/header.php';
-        require APP . 'view/manager/loglist.php';
+        require APP . 'view/manager/menu.php';
         require APP . 'view/footer.php';
     }
 
+    public function logs()
+    {
+        $logInfo = $this->dbModel->getLogInfoFields();
 
+        require APP . 'view/header.php';
+        require APP . 'view/manager/logs.php';
+        require APP . 'view/footer.php';
+
+    }
+
+    public function session()
+    {
+        if (isset($session_id))
+        {
+            $sessions = $this->dbModel->getLogsBySession($session_id);
+
+            var_dump($sessions);
+        }
+        #require APP . 'view/header.php';
+        #require APP . 'view/manager/log_session.php';
+        #require APP . 'view/footer.php';
+    }
+
+    public function address()
+    {
+        if (isset($address))
+        {
+            $addresses = $this->dbModel->getLogsByAddress($address);
+        }
+        require APP . 'view/header.php';
+        require APP . 'view/manager/log_address.php';
+        require APP . 'view/footer.php';
+    }
 
     public function logout()
     {
         $_SESSION = array();
         session_destroy();
-        header('Location:' . URL . 'login');
+        header('location:' . URL . 'start/manager');
     }
 }

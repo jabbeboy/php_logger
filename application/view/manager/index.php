@@ -6,6 +6,6 @@
     <br>
 
     <div class="box">
-        <p><a href="<?php echo URL; ?>manager/loglist">Log Menu</a></p>
+        <p><a href="<?php echo URL; ?>manager/menu">Log Menu</a></p>
     </div>
 </div>

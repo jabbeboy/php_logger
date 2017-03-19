@@ -1,6 +1,5 @@
 <?php
 
-
 class LogView {
 
     private $log;

@@ -120,7 +120,7 @@ class DbModel
      * Selects fields from database table
      * @return mixed returns id, session_id, address, date_time
      */
-    public function getLogFields()
+    public function getLogInfoFields()
     {
         $query = "SELECT DISTINCT id, session_id, address, date_time FROM logfiles ORDER BY date_time DESC";
         $stmt = $this->db->prepare($query);

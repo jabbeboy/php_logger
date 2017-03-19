@@ -16,4 +16,4 @@ require APP . 'core/application.php';
 require APP . 'core/controller.php';
 
 // start the application
-$app = new Application();
+$application = new Application();

@@ -9,8 +9,6 @@ class LogModel
 	 * LogModel constructor.
 	 * @param $dbModel
 	 */
-
-
     function __construct(DbModel $dbModel)
     {
         try
@@ -23,11 +21,6 @@ class LogModel
         }
     }
 
-    /**
-     * Log the exception with a message and insert it to the database
-     * @param $msg message
-     * @param $exception
-     */
     public function logException($msg,  $exception)
     {
 	    loggHeader($msg);
