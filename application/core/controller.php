@@ -8,17 +8,17 @@ class Controller
     public $db = null;
 
     /**
-     * @var null Model
+     * @var null Database Model
      */
     public $dbModel = null;
 
     /**
-     * @var null
+     * @var null Log Model
      */
     public $logModel = null;
 
     /**
-     * Whenever controller is created, the "model" is created and ready to use from within the controllers.
+     * When a controller is created, the "model" is also created
      */
     function __construct()
     {
@@ -39,19 +39,19 @@ class Controller
     }
 
     /**
-     * Loads the "model".
+     * Loads the "models".
      * @return object model
      */
     public function loadModel()
     {
         require APP . 'model/DbModel.php';
 
-        require APP . 'model/logmodel.php';
+        require APP . 'model/LogModel.php';
 
-        // create new "db model" (and pass the database connection)
+        // Create new "db model" (and pass the database connection)
         $this->dbModel = new DBModel($this->db);
 
-        // create new "log model"
+        // Create new "log model"
         $this->logModel = new LogModel($this->dbModel);
     }
 }
