@@ -58,7 +58,7 @@ class Manager extends CoreController
     {
         if (isset($_SESSION['user']))
         {
-            $allLogs = $this->dbModel->getLogFields();
+            $logs = $this->dbModel->getLogFields();
 
             require APP . 'view/header.php';
             require APP . 'view/manager/alllogs.php';

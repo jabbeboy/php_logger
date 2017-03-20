@@ -18,7 +18,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<?php foreach ($allLogs as $log) { ?>
+			<?php foreach ($logs as $log) { ?>
 				<tr>
 					<td><?php if (isset($log->id)) echo $log->id; ?></td>
 					<td><a href="<?php if (isset($log->session_id)); echo URL . 'manager/viewlog/' . $log->session_id . '=' . $log->id; ?>">View</a></td>
