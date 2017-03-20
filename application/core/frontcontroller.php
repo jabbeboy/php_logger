@@ -75,9 +75,11 @@ class FrontController
 		if (isset($_GET['url']))
 		{
 			// Split the URL
-			$url = trim($_GET['url'], '/');
-			$url = filter_var($url, FILTER_SANITIZE_URL);
-			$url = explode('/', $url);
+			//$url = trim($_GET['url'], '/');
+			//$url = filter_var($url, FILTER_SANITIZE_URL);
+			//$url = explode('/', $url);
+
+			$url = explode('/', filter_var(trim($_GET['url'], '/'), FILTER_SANITIZE_URL));
 
 			// Put URL parts into according properties
 			$this->url_controller = isset($url[0]) ? $url[0] : null;
