@@ -24,6 +24,7 @@ require APP . 'core/corecontroller.php';
 // Load Logger class
 require APP . 'model/Logger.php';
 
+// Start the front controller and handle the URL request
+$controller = new FrontController();
 
-// Start the front controller and listen for URL requests
-$application = new FrontController();
+$controller->handleRequest();

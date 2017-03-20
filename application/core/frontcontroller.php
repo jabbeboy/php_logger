@@ -14,23 +14,31 @@ class FrontController
 	/** @var array URL parameters */
 	private $url_params = array();
 
-	public function __construct()
+	/**public function __construct()
 	{
-        // Split the url
+
+	}*/
+
+	public function handleRequest()
+	{
+		// Split the url
 		$this->splitUrl();
 
-		// Check if any controller is requested
+		// No controller requested
 		if (!$this->url_controller)
 		{
 			require APP . 'controller/start.php';
 			$page = new Start();
 			$page->index();
 		}
+
+		// Requested controller exists?
 		elseif (file_exists(APP . 'controller/' . $this->url_controller . '.php'))
 		{
 			require APP . 'controller/' . $this->url_controller . '.php';
 			$this->url_controller = new $this->url_controller();
 
+			// Controller action exists?
 			if (method_exists($this->url_controller, $this->url_action))
 			{
 				if (!empty($this->url_params))
