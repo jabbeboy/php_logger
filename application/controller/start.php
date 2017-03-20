@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Class Home
- *
- * Please note:
- * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
- * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
- *
+ * Start controller
+ * This can be the websites absolute start page.
+ * In my example, it is only a simple answer submit to demonstrate the logging system.
  */
 class Start extends Controller
 {
     /**
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * Index view for start page
      */
     public function index()
     {
-        // load views
+        // Load views
         require APP . 'view/header.php';
         require APP . 'view/start/index.php';
         require APP . 'view/footer.php';
     }
 
+    /**
+     * Index view for login page
+     */
     public function manager()
     {
         require APP . 'view/header.php';
@@ -28,32 +28,36 @@ class Start extends Controller
         require APP . 'view/footer.php';
     }
 
+    /**
+     * Get the requested user from the database and authenticates by username and password
+     * Catches exceptions if the authentication fails
+     * Redirects to problem view if any error occurs.
+     */
     public function login()
     {
-        var_dump($_GET);
-
-        if (isset($_POST['login_btn']))
+        if (isset($_POST['login_submit']))
         {
+            $username = trim(stripslashes(htmlspecialchars($_POST['login_username'])));
+            $password = trim(stripslashes(htmlspecialchars($_POST['login_password'])));
+
             try
             {
-                $username = trim(stripslashes(htmlspecialchars($_POST['lg_username'])));
-                $password = trim(stripslashes(htmlspecialchars($_POST['lg_password'])));
-
                 $user = $this->dbModel->getUser($username);
+
+                // Authenticated user has correct username and password
                 if ($this->authenticate($user, $password))
                 {
-                    // It should be enough to regenerate the session id to mitigate attacks
+                    // It should be enough to regenerate the session id to mitigate attacks against sessions
                     session_regenerate_id();
 
                     // Set user session and redirect
                     $_SESSION['user'] = $user['username'];
 
-                    // Unset credentials from database request and $_POST
+                    // Unset credentials from db request and $_POST variable and redirect
                     unset($user['salt']);
                     unset($user['password']);
                     unset($_POST);
 
-                    // Redirects to manager: http://domain.com/manager
                     header('location:' . URL . 'manager');
                 }
             }
@@ -65,6 +69,12 @@ class Start extends Controller
         }
     }
 
+    /**
+     * @param $user
+     * @param $password
+     * @return bool
+     * @throws Exception
+     */
     private function authenticate($user, $password)
     {
         if (!$user) {
@@ -84,8 +94,48 @@ class Start extends Controller
         return true;
     }
 
+    /**
+     * Handles the user input answers and log any exceptions that is throwned when validating the answers.
+     */
     public function process()
     {
+        if (isset($_POST['submit']))
+        {
+            try {
+                $this->validate($_POST['question_one'], $_POST['question_two']);
+                header('Location:' . URL . 'start/success');
+            }
+            catch (Exception $exception)
+            {
+                $this->logModel->logException($exception, $exception);
+                header('location:' . URL . 'problem');
+            }
+        }
+    }
 
+    /**
+     * Validates the user input answers and throws exception if not valid.
+     * @param $result string from user input
+     * @param $name string from user input
+     * @throws Exception
+     */
+    public function validate($result, $name)
+    {
+        $result = (int)$result;
+
+        if (!filter_var($result, FILTER_VALIDATE_INT) === true)
+        {
+            throw new Exception('Input is not a integer');
+        }
+
+        if ($result !== 250)
+        {
+            throw new Exception('Wrong answer');
+        }
+
+        if ($name !== "Barack Obama")
+        {
+            throw new Exception('Wrong answer');
+        }
     }
 }

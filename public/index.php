@@ -1,19 +1,29 @@
 <?php
 
-session_start();
 
+/**
+ * PHP-Logger
+ * All URL will go through the front controller to determine which controller and view will be showed.
+ * @author Jakob Wångö
+ *
+ */
+
+// Defines the application root directories
 define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-
-// set a constant that holds the project's "application" folder, like "/var/www/application".
 define('APP', ROOT . 'application' . DIRECTORY_SEPARATOR);
 
-// load application config (error reporting etc.)
+// Load application config (db config, error reporting)
 require APP . 'config/config.php';
 
-// FOR DEVELOPMENT: this loads PDO-debug, a simple function that shows the SQL query (when using PDO).
-// load application class
-require APP . 'core/application.php';
+session_start();
+
+// Load core application classes
+require APP . 'core/frontcontroller.php';
 require APP . 'core/controller.php';
 
-// start the application
-$application = new Application();
+// Load Logger class
+require APP . 'model/logger.php';
+
+
+// Start the front controller and listen for URL requests
+$application = new FrontController();

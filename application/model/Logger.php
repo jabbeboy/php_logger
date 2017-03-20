@@ -3,7 +3,7 @@
 //This has no namespace for convenience, it should really be a common module
 
 require_once(APP . "model/LogCollection.php");
-require_once(APP . "view/LogView.php");
+require_once(APP . "view/logview.php");
 
 
 //uses globals for convenience

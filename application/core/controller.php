@@ -12,11 +12,13 @@ class Controller
      */
     public $dbModel = null;
 
-    //TODO
+    /**
+     * @var null
+     */
     public $logModel = null;
 
     /**
-     * Whenever controller is created, open a database connection too and load "the model".
+     * Whenever controller is created, the "model" is created and ready to use from within the controllers.
      */
     function __construct()
     {
@@ -29,7 +31,10 @@ class Controller
      */
     private function openDatabaseConnection()
     {
+        // Set the (optional) options of the PDO connection. in this case, we set the fetch mode to
         $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
+
+        // Generate a database connection, using the PDO connector
         $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
     }
 
@@ -41,11 +46,12 @@ class Controller
     {
         require APP . 'model/DbModel.php';
 
-        require APP . 'model/LogModel.php';
+        require APP . 'model/logmodel.php';
 
-        // create new "model" (and pass the database connection)
-        $this->dbModel = new DbModel($this->db);
+        // create new "db model" (and pass the database connection)
+        $this->dbModel = new DBModel($this->db);
 
+        // create new "log model"
         $this->logModel = new LogModel($this->dbModel);
     }
 }

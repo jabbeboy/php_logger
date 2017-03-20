@@ -1,4 +1,4 @@
-CREATE TABLE `template`.`users` (
+CREATE TABLE `logger`.`users` (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -8,3 +8,5 @@ CREATE TABLE `template`.`users` (
     UNIQUE KEY username(username),
     UNIQUE KEY email(email)
 );
+
+

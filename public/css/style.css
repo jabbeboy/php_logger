@@ -1,4 +1,4 @@
- #header {
+#header {
      margin-left: 30px;
 }
 
@@ -12,30 +12,31 @@ body {
 }
 .navigation a {
     display: inline-flex;
-    padding: 5px 15px;
+    padding: 10px 15px;
     text-decoration: none;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
-    background: #222;
-    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
+    background-color: #c2c2c2;
     margin-bottom: 5px;
 }
 .navigation a:hover {
-    color: #222;
-    background: transparent;
+    background-color: #222;
+    color: #fff;
 }
+
 .container {
     border: 1px solid #ddd;
-    padding: 20px;
+    padding: 15px;
     margin: 33px;
 }
+
 .container a {
     color: #222;
 }
+
 .container table {
-    font-size: 11px;
+    font-size: 12px;
     margin-top: 20px;
 }
 .container table thead td {
@@ -51,13 +52,13 @@ body {
     margin-top: 30px;
 }
 .container input {
-    background-color: #222;
+    background-color: #f5f5f5;
     border: 0;
     padding: 5px 10px;
     margin-bottom: 5px;
 }
 .container input[type="submit"] {
-    background-color: #222;
+    background-color: #c2c2c2;
     cursor: pointer;
 }
 .container input[type="submit"]:hover {
@@ -74,6 +75,12 @@ body {
     background-color: #222;
     color: #fff;
 }
+
+.htmlLogBox {
+    font-size: 12px;
+    overflow: auto;
+}
+
 .footer {
     padding: 20px;
     margin: 33px;

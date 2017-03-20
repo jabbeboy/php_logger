@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Login</h1>
-    <p><i>Log Manager requires you to be logged in.</i></p>
+    <p><i>To access the Log Manager, you need to log in.</i></p>
     <div class="box">
         <form id="login-form" class="text-left" action="<?php echo URL ?>start/login" method="POST">
 
@@ -10,10 +10,11 @@
             <label>Password</label>
             <input type="password" id="login_password" value="" name="login_password" required>
 
-            <input type="submit" name="login_submit" value="Login">
+            <input type="submit" name="login_submit" class="login-button" value="Login">
         </form>
         <div>
         </div>
     </div>
 </div>
+
 
