@@ -8,18 +8,17 @@
 class Start extends CoreController
 {
     /**
-     * Index view for start page
+     * Index page for start
      */
     public function index()
     {
-        // Load views
         require APP . 'view/header.php';
         require APP . 'view/start/index.php';
         require APP . 'view/footer.php';
     }
 
     /**
-     * Index view for login page
+     * Login page for manager
      */
     public function manager()
     {
@@ -70,6 +69,8 @@ class Start extends CoreController
     }
 
     /**
+     * Authenticates the user with the requested username from the database.
+     * If not correct, exceptions will be thrown.
      * @param $user
      * @param $password
      * @return bool
@@ -95,19 +96,24 @@ class Start extends CoreController
     }
 
     /**
-     * Handles the user input answers and log any exceptions that is throwned when validating the answers.
+     * Processes the answers the user submitted.
+     * If correct, success view will be showned, else the
+     * invalid input will be logged.
      */
-    public function process()
+    public function submit()
     {
         if (isset($_POST['submit']))
         {
+            $answerOne = $_POST['question_one'];
+            $answerTwo = $_POST['question_two'];
+
             try {
-                $this->validate($_POST['question_one'], $_POST['question_two']);
-                header('Location:' . URL . 'start/success');
+                $this->validateInput($answerOne, $answerTwo);
+                header('location:' . URL . 'start/success');
             }
             catch (Exception $exception)
             {
-                $this->logModel->logException($exception, $exception);
+                $this->logModel->logException('Wrong input', $exception);
                 header('location:' . URL . 'problem');
             }
         }
@@ -119,7 +125,7 @@ class Start extends CoreController
      * @param $name string from user input
      * @throws Exception
      */
-    public function validate($result, $name)
+    public function validateInput($result, $name)
     {
         $result = (int)$result;
 

@@ -1,4 +1,4 @@
 <div class="container">
-    <h2>A problem occured</h2>
-    <p>This will be shown when a bad request or problem has occured for different reasons.</p>
+    <h2>Something went wrong</h2>
+    <p>This page will show up if your request was bad or by some other reason.</p>
 </div>

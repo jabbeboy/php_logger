@@ -56,12 +56,17 @@ class Manager extends CoreController
      */
     public function logs()
     {
-        $allLogs = $this->dbModel->getLogFields();
+        if (isset($_SESSION['user'])) {
+            $allLogs = $this->dbModel->getLogFields();
 
-        require APP . 'view/header.php';
-        require APP . 'view/manager/alllogs.php';
-        require APP . 'view/footer.php';
-
+            require APP . 'view/header.php';
+            require APP . 'view/manager/alllogs.php';
+            require APP . 'view/footer.php';
+        }
+        else
+        {
+            header('location:' . URL . 'problem');
+        }
     }
 
     /**
@@ -120,13 +125,13 @@ class Manager extends CoreController
             {
                 $session_id = strtok($sessionAndId, '=');
                 $id = substr($sessionAndId, strpos($sessionAndId, '=') + 1);
-
-                $log = $this->dbModel->getLogHtml($session_id, $id);
-
-                require APP . 'view/header.php';
-                require APP . 'view/manager/viewlog.php';
-                require APP . 'view/footer.php';
             }
+            $log = $this->dbModel->getLogHtml($session_id, $id);
+
+            require APP . 'view/header.php';
+            require APP . 'view/manager/viewlog.php';
+            require APP . 'view/footer.php';
+
         }
         else
         {
@@ -156,13 +161,12 @@ class Manager extends CoreController
                 if ($this->dbModel->deleteLog($session_id, $id))
                 {
                     header('location:' . $_SERVER['HTTP_REFERER']);
-                    //header('location:' . URL . 'manager/viewlogs');
                 }
             }
-        }
-        else
-        {
-            header('location:' . URL . 'problem');
+            else
+            {
+                header('location:' . URL . 'problem');
+            }
         }
     }
 
@@ -177,11 +181,11 @@ class Manager extends CoreController
         {
             $_SESSION = array();
             session_destroy();
-            header('refresh:0');
+            header('location:' .URL . 'start/manager');
         }
         else
         {
-            header('location:' . URL . 'start/manager');
+            header('location:' . URL . 'problem');
         }
     }
 }

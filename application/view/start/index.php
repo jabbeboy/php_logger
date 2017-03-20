@@ -1,8 +1,8 @@
+<!-- Start -->
 <div class="container">
     <h2>Log Generator Example</h2>
-    <p>If you answer the questions with incorrect answers or input, the invalid answer submitting will be logged. </p>
+    <p>If you answer the questions with incorrect answers or input, the submitting will be logged (for demonstration purpose). </p>
     <div class="box">
-
         <form id="form" class="text-left" action="<?php echo URL ?>start/submit" method="POST">
             1. What is 50 multiplied by 5?
             <br>
