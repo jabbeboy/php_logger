@@ -12,7 +12,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 /**
  * PHP.ini
- * Protect against session fixation from attacker
+ * Protect against session fixation from attackers
  */
 ini_set('session.use_only_cookies', true);
 ini_set('session.use_trans_sid', false);

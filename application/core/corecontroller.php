@@ -34,10 +34,10 @@ class CoreController
      */
     private function openDatabaseConnection()
     {
-        // Set the (optional) options of the PDO connection. in this case, we set the fetch mode to
+        // Set the options of the PDO connection
         $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
 
-        // Generate a database connection, using the PDO connector
+        // Creates a new PDO database connection
         $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
     }
 
@@ -48,7 +48,6 @@ class CoreController
     public function loadModel()
     {
         require APP . 'model/DbModel.php';
-
         require APP . 'model/LogModel.php';
 
         // Create new "db model" (and pass the database connection)
