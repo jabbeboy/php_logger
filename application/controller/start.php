@@ -5,7 +5,7 @@
  * This can be the websites absolute start page.
  * In my example, it is only a simple answer submit to demonstrate the logging system.
  */
-class Start extends Controller
+class Start extends CoreController
 {
     /**
      * Index view for start page

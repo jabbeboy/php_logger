@@ -12,8 +12,6 @@
 
             <input type="submit" name="login_submit" value="Login">
         </form>
-        <div>
-        </div>
     </div>
 </div>
 

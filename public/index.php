@@ -19,7 +19,7 @@ session_start();
 
 // Load core application classes
 require APP . 'core/frontcontroller.php';
-require APP . 'core/controller.php';
+require APP . 'core/corecontroller.php';
 
 // Load Logger class
 require APP . 'model/Logger.php';

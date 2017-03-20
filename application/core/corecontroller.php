@@ -1,6 +1,9 @@
 <?php
 
-class Controller
+/**
+ * Class Controller
+ */
+class CoreController
 {
     /**
      * @var null Database Connection
@@ -51,7 +54,7 @@ class Controller
         // Create new "db model" (and pass the database connection)
         $this->dbModel = new DBModel($this->db);
 
-        // Create new "log model"
+        // Create new "log model" (and pass database model)
         $this->logModel = new LogModel($this->dbModel);
     }
 }

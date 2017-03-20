@@ -1,7 +1,7 @@
 <!-- Address Logs -->
 <div class="container">
 	<a href="<?php echo URL . 'manager/menu' ?>"><i>Go back</i></a>
-	<h2>View IP-Addresses</h2>
+	<h2>IP-Addresses</h2>
     <p>Here are all the logged events with the same host address that has been saved to the database.
         <br>
         They are in a date descending order with the latest log at the top.

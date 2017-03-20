@@ -1,3 +1,4 @@
+<!-- Manager Home -->
 <div class="container">
     <a href="<?php echo URL; ?>manager/logout"><i>Logout</i></a>
     <h2>Log Manager</h2>

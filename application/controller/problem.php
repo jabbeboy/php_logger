@@ -1,6 +1,6 @@
 <?php
 
-class Problem extends Controller
+class Problem extends CoreController
 {
     /**
      * Problem index view

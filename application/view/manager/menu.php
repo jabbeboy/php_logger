@@ -17,7 +17,6 @@
                 <tr>
                     <td><a href="<?php echo URL . 'manager/logs/' ?>">View</a></td>
                     <td>All Logs</td>
-
                 </tr>
             </tbody>
         </table>
@@ -35,7 +34,7 @@
             <tbody>
 			<?php foreach ($sessions as $log) { ?>
                 <tr>
-                    <td><a href="<?php if (isset($log->session_id)); echo URL . 'manager/sessions/' . $log->session_id ?>">View</a></td>
+                    <td><a href="<?php if (isset($log->session_id)) echo URL . 'manager/session/' . $log->session_id; ?>">View</a></td>
                     <td><?php if (isset($log->session_id)) echo $log->session_id ?></td>
                 </tr>
 			<?php } ?>
@@ -55,7 +54,7 @@
             <tbody>
 			<?php foreach ($addresses as $log) { ?>
                 <tr>
-                    <td><a href="<?php if (isset($log->address)) echo URL . 'manager/addresses/' . $log->address; ?>">View</a></td>
+                    <td><a href="<?php if (isset($log->address)) echo URL . 'manager/address/' . $log->address; ?>">View</a></td>
                     <td><?php if (isset($log->address)) echo $log->address; ?></td>
                 </tr>
 			<?php } ?>
