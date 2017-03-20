@@ -1,5 +1,5 @@
-# PHP-Logger
-## A persistent log-system
+# PHP-Logger - Persistent Log-System
+## 1DV608
 
 The log-system was built with the help of the following log library.
 https://github.com/dntoll/phpLoggerLib
