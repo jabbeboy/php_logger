@@ -23,6 +23,8 @@ session_start();
 require APP . 'core/frontcontroller.php';
 require APP . 'core/corecontroller.php';
 
+require APP . 'model/Logger.php';
+
 // Start the front controller and handle the URL request
 $controller = new FrontController();
 

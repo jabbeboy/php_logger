@@ -48,9 +48,7 @@ class CoreController
     public function loadModels()
     {
         require APP . 'model/DbModel.php';
-        require APP . 'model/Logger.php';
         require APP . 'model/LogModel.php';
-
 
         // Create new "db model" (and pass the database connection)
         $this->dbModel = new DBModel($this->db);
