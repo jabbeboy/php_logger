@@ -56,7 +56,8 @@ class Manager extends CoreController
      */
     public function logs()
     {
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']))
+        {
             $allLogs = $this->dbModel->getLogFields();
 
             require APP . 'view/header.php';
@@ -131,7 +132,6 @@ class Manager extends CoreController
             require APP . 'view/header.php';
             require APP . 'view/manager/viewlog.php';
             require APP . 'view/footer.php';
-
         }
         else
         {
@@ -163,10 +163,10 @@ class Manager extends CoreController
                     header('location:' . $_SERVER['HTTP_REFERER']);
                 }
             }
-            else
-            {
-                header('location:' . URL . 'message');
-            }
+        }
+        else
+        {
+            header('location:' . URL . 'message');
         }
     }
 
