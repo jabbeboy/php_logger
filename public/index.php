@@ -22,7 +22,7 @@ require APP . 'core/frontcontroller.php';
 require APP . 'core/controller.php';
 
 // Load Logger class
-require APP . 'model/logger.php';
+require APP . 'model/Logger.php';
 
 
 // Start the front controller and listen for URL requests
