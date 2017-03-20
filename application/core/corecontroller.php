@@ -30,7 +30,7 @@ class CoreController
     }
 
     /**
-     * Open the database connection with the credentials from application/config/config.php
+     * Open the database connection with credentials from the config.php file
      */
     private function openDatabaseConnection()
     {

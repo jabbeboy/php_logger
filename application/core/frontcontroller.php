@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class FrontController
+ */
 class FrontController
 {
 	/** @var null The controller */
@@ -13,7 +16,7 @@ class FrontController
 
 	public function __construct()
 	{
-        // Split the url into 3 parts(controller, action, param)
+        // Split the url
 		$this->splitUrl();
 
 		// Check if any controller is requested
@@ -43,7 +46,6 @@ class FrontController
 			{
 				if (strlen($this->url_action) == 0)
 				{
-					// No action defined: call the default index() method of a selected controller
 					$this->url_controller->index();
 				}
 				else
@@ -59,7 +61,7 @@ class FrontController
 	}
 
 	/**
-	 * Get and split the URL
+	 * Get the URL and split it into (controller, action, parameter)
 	 */
 	private function splitUrl()
 	{
@@ -77,13 +79,13 @@ class FrontController
 			// Remove controller and action from the split URL
 			unset($url[0], $url[1]);
 
-			// Rebase array keys and store the URL params
 			$this->url_params = array_values($url);
 
-			// Debugging.
+			/* Used when debugging.
 			echo 'Controller: ' . $this->url_controller . '<br>';
 			echo 'Action: ' . $this->url_action . '<br>';
 			echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+			*/
 		}
 	}
 }
