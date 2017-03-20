@@ -74,14 +74,9 @@ class FrontController
 	{
 		if (isset($_GET['url']))
 		{
-			// Split the URL
-			//$url = trim($_GET['url'], '/');
-			//$url = filter_var($url, FILTER_SANITIZE_URL);
-			//$url = explode('/', $url);
-
 			$url = explode('/', filter_var(trim($_GET['url'], '/'), FILTER_SANITIZE_URL));
 
-			// Put URL parts into according properties
+			// Set the controller and action from the url array values
 			$this->url_controller = isset($url[0]) ? $url[0] : null;
 			$this->url_action = isset($url[1]) ? $url[1] : null;
 

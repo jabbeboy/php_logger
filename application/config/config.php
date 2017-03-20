@@ -1,8 +1,7 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
+error_reporting(0);
+ini_set("display_errors", 0);
 
 define('URL_PUBLIC_FOLDER', 'public');
 define('URL_PROTOCOL', '//');
@@ -25,7 +24,6 @@ define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_NAME', 'logger');
-
 define('DB_USER', 'root');
 define('DB_PASS', 'root');
 define('DB_CHARSET', 'utf8');
