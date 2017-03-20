@@ -22,7 +22,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('Location:' . URL . 'problem');
+            header('location:' . URL . 'message');
         }
     }
 
@@ -45,7 +45,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('Location:' . URL . 'problem');
+            header('location:' . URL . 'message');
         }
     }
 
@@ -65,7 +65,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('location:' . URL . 'problem');
+            header('location:' . URL . 'message');
         }
     }
 
@@ -105,7 +105,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('location:' . URL . 'problem');
+            header('location:' . URL . 'message');
         }
     }
 
@@ -135,7 +135,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('location:' . URL . 'problem');
+            header('location:' . URL . 'message');
         }
     }
 
@@ -165,7 +165,7 @@ class Manager extends CoreController
             }
             else
             {
-                header('location:' . URL . 'problem');
+                header('location:' . URL . 'message');
             }
         }
     }
@@ -185,7 +185,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('location:' . URL . 'problem');
+            header('location:' . URL . 'message');
         }
     }
 }

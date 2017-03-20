@@ -7,7 +7,7 @@
 class Start extends CoreController
 {
     /**
-     * Index page for start
+     * Index page for start view
      */
     public function index()
     {
@@ -17,13 +17,20 @@ class Start extends CoreController
     }
 
     /**
-     * Login page for manager
+     * Login page for manager view
      */
     public function manager()
     {
-        require APP . 'view/header.php';
-        require APP . 'view/start/login.php';
-        require APP . 'view/footer.php';
+        if (isset($_SESSION['user']))
+        {
+            header('location:' . URL . 'manager');
+        }
+        else
+        {
+            require APP . 'view/header.php';
+            require APP . 'view/start/login.php';
+            require APP . 'view/footer.php';
+        }
     }
 
     /**
@@ -62,7 +69,7 @@ class Start extends CoreController
             catch (Exception $exception)
             {
                 $this->logModel->logException('Login failed', $exception);
-                header('location:' . URL . 'problem');
+                header('location:' . URL . 'message');
             }
         }
     }
@@ -103,17 +110,16 @@ class Start extends CoreController
     {
         if (isset($_POST['submit']))
         {
-            $answerOne = $_POST['question_one'];
-            $answerTwo = $_POST['question_two'];
-
+            var_dump($_POST);
             try {
-                $this->validateInput($answerOne, $answerTwo);
-                header('location:' . URL . 'start/success');
+
+                $this->validateInput($_POST['question_one'], $_POST['question_two']);
+                header('location:' . URL . 'message/success');
             }
             catch (Exception $exception)
             {
                 $this->logModel->logException('Wrong input', $exception);
-                header('location:' . URL . 'problem');
+                header('location:' . URL . 'message');
             }
         }
     }
@@ -123,6 +129,7 @@ class Start extends CoreController
      * @param $result string from user input
      * @param $name string from user input
      * @throws Exception
+     * @return true
      */
     private function validateInput($result, $name)
     {
@@ -130,17 +137,18 @@ class Start extends CoreController
 
         if (!filter_var($result, FILTER_VALIDATE_INT) === true)
         {
-            throw new Exception('Input is not a integer');
+            throw new Exception('Is not a integer');
         }
 
-        if ($result !== 250)
+        if ($result !== 3)
         {
-            throw new Exception('Wrong answer');
+            throw new Exception('Wrong number');
         }
 
-        if ($name !== "Barack Obama")
+        if ($name !== "Obama")
         {
-            throw new Exception('Wrong answer');
+            throw new Exception('Wrong name');
         }
+        return true;
     }
 }

@@ -4,7 +4,7 @@
  * The problem controller
  * Is mostly used when a bad request occur by the users.
  */
-class Problem extends CoreController
+class Message extends CoreController
 {
     /**
      * Problem index view
@@ -12,9 +12,15 @@ class Problem extends CoreController
      */
     public function index()
     {
-        // Load views
         require APP . 'view/header.php';
-        require APP . 'view/problem/index.php';
+        require APP . 'view/message/index.php';
+        require APP . 'view/footer.php';
+    }
+
+    public function success()
+    {
+        require APP . 'view/header.php';
+        require APP . 'view/message/success.php';
         require APP . 'view/footer.php';
     }
 }

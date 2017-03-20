@@ -57,13 +57,13 @@ class FrontController
 				}
 				else
 				{
-					header('location: ' . URL . 'problem');
+					header('location: ' . URL . 'message');
 				}
 			}
 		}
 		else
 		{
-			header('location: ' . URL . 'problem');
+			header('location: ' . URL . 'message');
 		}
 	}
 
