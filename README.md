@@ -4,12 +4,6 @@
 The log-system was built with the help of the following log library.
 https://github.com/dntoll/phpLoggerLib
 
-### Screenshots
-[Screenshot 1](Screenshot1.png)
-[Screenshot 2](Screenshot2.png)
-
-
-
 ### Tasks
 :ballot_box_with_check: 1. Add a persistent storage to store messages on the server for the following log library.
 
@@ -40,5 +34,3 @@ https://github.com/dntoll/phpLoggerLib
 * Administrator selects a session from the list
 * System presents a list of all log items in each requests in that session ordered by time
 
-
-Admin is the only authorized user that should be able to log in, therefor there is no registration system. 
