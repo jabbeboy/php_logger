@@ -9,7 +9,7 @@
 		<table>
 			<thead style="background-color: #ddd; font-weight: bold;">
 			<tr>
-				<td>Nr</td>
+				<td>Id</td>
 				<td>View</td>
 				<td>Date</td>
 				<td>Session</td>

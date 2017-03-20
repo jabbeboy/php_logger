@@ -14,17 +14,23 @@ class Manager extends CoreController
      */
     public function index()
     {
-        require APP . 'view/header.php';
-        require APP . 'view/manager/index.php';
-        require APP . 'view/footer.php';
-
+        if (isset($_SESSION['user']))
+        {
+            require APP . 'view/header.php';
+            require APP . 'view/manager/index.php';
+            require APP . 'view/footer.php';
+        }
+        else
+        {
+            header('Location:' . URL . 'problem');
+        }
     }
 
     /**
-     * Shows the log menu view.
+     * Shows the menu view.
      * The logmenu saves the ip addresses and session ids in arrays that the
      * view uses and prints out in tables.
-     * If no session is set, redirects to login
+     * If no session is set, redirects to problem controller
      */
     public function menu()
     {
@@ -39,7 +45,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('Location:' . URL . 'login');
+            header('Location:' . URL . 'problem');
         }
     }
 
@@ -60,15 +66,14 @@ class Manager extends CoreController
 
     /**
      * Gets all logs by session id and stores in a array that is viewed
-     * in the viewsession view.
+     * in the session view.
      * @param $session_id
      */
     public function session($session_id)
     {
         if (isset($session_id))
         {
-            var_dump($session_id);
-            $logBySession = $this->dbModel->getLogsBySession($session_id);
+            $logs = $this->dbModel->getLogsBySession($session_id);
         }
         require APP . 'view/header.php';
         require APP . 'view/manager/session.php';
@@ -78,7 +83,8 @@ class Manager extends CoreController
     /**
      * Gets all logs by address and stores in a array that is viewed
      * in the viewaddress view.
-     * If no session is set, redirects to login
+     * If no session is set, redirects to problem controller
+     * @param $address
      */
     public function address($address)
     {
@@ -86,7 +92,7 @@ class Manager extends CoreController
         {
             if (isset($address))
             {
-                $logsByAddress = $this->dbModel->getLogsByAddress($address);
+                $logs = $this->dbModel->getLogsByAddress($address);
             }
             require APP . 'view/header.php';
             require APP . 'view/manager/address.php';
@@ -94,7 +100,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('Location:' . URL . 'login');
+            header('location:' . URL . 'problem');
         }
     }
 
@@ -103,17 +109,17 @@ class Manager extends CoreController
     /**
      * Views the selected by getting the html blob from the database and printing
      * it out on the html
-     * If no session is set, redirects to login
-     * @param $param_id
+     * If no session is set, redirects to problem controller
+     * @param $sessionAndId
      */
-    public function viewlog($param_id)
+    public function viewlog($sessionAndId)
     {
         if (isset($_SESSION['user']))
         {
-            if (isset($param_id))
+            if (isset($sessionAndId))
             {
-                $session_id = strtok($param_id, '=');
-                $id = substr($param_id, strpos($param_id, '=') + 1);
+                $session_id = strtok($sessionAndId, '=');
+                $id = substr($sessionAndId, strpos($sessionAndId, '=') + 1);
 
                 $log = $this->dbModel->getLogHtml($session_id, $id);
 
@@ -124,7 +130,7 @@ class Manager extends CoreController
         }
         else
         {
-            header('Location:' . URL . 'login');
+            header('location:' . URL . 'problem');
         }
     }
 
@@ -132,33 +138,37 @@ class Manager extends CoreController
      * Deletes log file from database with help of sent $log_id
      * which basically is just the $session_id concatenated with a "=" delimiter
      * and $id of from the logfiles table.
-     * If no session is set, redirects to login
-     * @param $param_id string with session_id and id
+     * If no session is set, redirects to problem controller
+     * @param $sessionAndId string with session_id and id
      */
-    public function deleteLog($param_id)
+    public function deleteLog($sessionAndId)
     {
         if (isset($_SESSION['user']))
         {
-            if (isset($param_id))
+            if (isset($sessionAndId))
             {
-                $session_id = strtok($param_id, '=');
-                $id = substr($param_id, strpos($param_id, '=') + 1);
+                // Get the session id
+                $session_id = strtok($sessionAndId, '=');
+
+                // Get the log id
+                $id = substr($sessionAndId, strpos($sessionAndId, '=') + 1);
 
                 if ($this->dbModel->deleteLog($session_id, $id))
                 {
-                    header('Location:' . URL . 'manager/viewlogs');
+                    header('location:' . $_SERVER['HTTP_REFERER']);
+                    //header('location:' . URL . 'manager/viewlogs');
                 }
             }
         }
         else
         {
-            header('Location:' . URL . 'login');
+            header('location:' . URL . 'problem');
         }
     }
 
     /**
      * Destroys the session and refresh page.
-     * If no session is set, redirects to login
+     * If no session is set, redirects to problem controller
      * Manager page should then not be possible to access due to session_destroyed.
      */
     public function logout()
@@ -167,11 +177,11 @@ class Manager extends CoreController
         {
             $_SESSION = array();
             session_destroy();
-            header('Refresh:0');
+            header('refresh:0');
         }
         else
         {
-            header('Location:' . URL . 'start/manager');
+            header('location:' . URL . 'start/manager');
         }
     }
 }

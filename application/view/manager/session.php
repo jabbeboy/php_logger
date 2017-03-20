@@ -1,7 +1,7 @@
 <!-- Session Logs --->
 <div class="container">
 	<a href="<?php echo URL . 'manager/menu'; ?>"><i>Go back</i></a>
-	<h2>Sessions</h2>
+	<h2>Logs by Session</h2>
     <p>Here are all the logged events within the same session that has been saved to the database.
         <br>
         They are in a date descending order with the latest log at the top.
@@ -10,7 +10,7 @@
 		<table>
 			<thead style="background-color: #ddd; font-weight: bold;">
 			<tr>
-				<td>Nr</td>
+				<td>Id</td>
 				<td>View</td>
 				<td>Date</td>
 				<td>Session</td>
@@ -19,7 +19,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<?php foreach ($logsBySession as $log) { ?>
+			<?php foreach ($logs as $log) { ?>
 				<tr>
 					<td><?php if (isset($log->id)) echo $log->id; ?></td>
 					<td><a href="<?php if (isset($log->session_id)) echo URL . 'manager/viewlog/' . $log->session_id . '=' . $log->id; ?>">View</a></td>
