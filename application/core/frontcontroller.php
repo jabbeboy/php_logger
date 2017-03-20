@@ -14,11 +14,10 @@ class FrontController
 	/** @var array URL parameters */
 	private $url_params = array();
 
-	/**public function __construct()
-	{
-
-	}*/
-
+    /**
+     * Handles the URL requests and creates the corresponding controllers
+     * if the requested controller exists in application
+     */
 	public function handleRequest()
 	{
 		// Split the url
@@ -58,13 +57,13 @@ class FrontController
 				}
 				else
 				{
-					header('Location: ' . URL . 'problem');
+					header('location: ' . URL . 'problem');
 				}
 			}
 		}
 		else
 		{
-			header('Location: ' . URL . 'problem');
+			header('location: ' . URL . 'problem');
 		}
 	}
 
@@ -88,12 +87,6 @@ class FrontController
 			unset($url[0], $url[1]);
 
 			$this->url_params = array_values($url);
-
-			/* Used when debugging.
-			echo 'Controller: ' . $this->url_controller . '<br>';
-			echo 'Action: ' . $this->url_action . '<br>';
-			echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
-			*/
 		}
 	}
 }

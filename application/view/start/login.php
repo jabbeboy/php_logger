@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Login</h1>
-    <p><i>Log Manager requires you to be logged in.</i></p>
+    <h2>Log Manager</h2>
+    <p><i>Log Manager requires you to be logged in if you want to access.</i></p>
     <div class="box">
         <form id="login-form" class="text-left" action="<?php echo URL ?>start/login" method="POST">
 

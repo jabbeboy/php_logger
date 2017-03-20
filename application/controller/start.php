@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Start controller
- * This can be the websites absolute start page.
- * In my example, it is only a simple answer submit to demonstrate the logging system.
+ * The start controller
+ * Handles the processing of the answers and login to the manager zone.
  */
 class Start extends CoreController
 {
@@ -52,7 +51,7 @@ class Start extends CoreController
                     // Set user session and redirect
                     $_SESSION['user'] = $user['username'];
 
-                    // Unset credentials from db request and $_POST variable and redirect
+                    // Unset credentials from the db request and $_POST and redirect
                     unset($user['salt']);
                     unset($user['password']);
                     unset($_POST);
@@ -125,7 +124,7 @@ class Start extends CoreController
      * @param $name string from user input
      * @throws Exception
      */
-    public function validateInput($result, $name)
+    private function validateInput($result, $name)
     {
         $result = (int)$result;
 

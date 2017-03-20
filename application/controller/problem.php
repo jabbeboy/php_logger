@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * The problem controller
+ * Is mostly used when a bad request occur by the users.
+ */
 class Problem extends CoreController
 {
     /**

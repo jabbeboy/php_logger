@@ -25,14 +25,14 @@ class CoreController
      */
     function __construct()
     {
-        $this->openDatabaseConnection();
-        $this->loadModel();
+        $this->openDBConnection();
+        $this->loadModels();
     }
 
     /**
      * Open the database connection with credentials from the config.php file
      */
-    private function openDatabaseConnection()
+    private function openDBConnection()
     {
         // Set the options of the PDO connection
         $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
@@ -45,10 +45,12 @@ class CoreController
      * Loads the "models".
      * @return object model
      */
-    public function loadModel()
+    public function loadModels()
     {
         require APP . 'model/DbModel.php';
+        require APP . 'model/Logger.php';
         require APP . 'model/LogModel.php';
+
 
         // Create new "db model" (and pass the database connection)
         $this->dbModel = new DBModel($this->db);

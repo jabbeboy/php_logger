@@ -3,8 +3,10 @@
 
 /**
  * PHP-Logger
- * All URL will go through the front controller to determine which controller and view will be showed.
- * @author Jakob Wångö
+ * Persistent log system
+ * All URL:s will go through the front controller to determine which controller the request is
+ * and will view the correspond views
+ * @author Jakob Wångö (jv222dp@student.lnu.se)
  *
  */
 
@@ -20,9 +22,6 @@ session_start();
 // Load core application classes
 require APP . 'core/frontcontroller.php';
 require APP . 'core/corecontroller.php';
-
-// Load Logger class
-require APP . 'model/Logger.php';
 
 // Start the front controller and handle the URL request
 $controller = new FrontController();

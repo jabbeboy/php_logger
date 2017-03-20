@@ -1,11 +1,11 @@
 <?php
 
 /**
- * The Manager controller
- * Is used for all manager actions like view logs, delete, logout.
- *
- * the actions(functions) is protected against un-authorized users.
- * Session will only be set if admin passes the login authentication
+ * The manager controller
+ * Is used for all manager actions like view logs, delete, logout and etc.
+ * The functions (actions) should be protected against un-authorized users
+ * because the session is only set by the server itself if successfully
+ * authentication occur.
  */
 class Manager extends CoreController
 {
