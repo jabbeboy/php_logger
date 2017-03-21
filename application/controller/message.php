@@ -23,4 +23,11 @@ class Message extends CoreController
         require APP . 'view/message/success.php';
         require APP . 'view/footer.php';
     }
+
+    public function unauthorized()
+    {
+	    require APP . 'view/header.php';
+	    require APP . 'view/message/unauthorized.php';
+	    require APP . 'view/footer.php';
+    }
 }

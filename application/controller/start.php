@@ -110,9 +110,7 @@ class Start extends CoreController
     {
         if (isset($_POST['submit']))
         {
-            var_dump($_POST);
             try {
-
                 $this->validateInput($_POST['question_one'], $_POST['question_two']);
                 header('location:' . URL . 'message/success');
             }
