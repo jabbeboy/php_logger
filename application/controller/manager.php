@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The manager controller
+ * The Manager controller
  * Is used for all manager actions like view logs, delete, logout and etc.
  * The functions (actions) should be protected against un-authorized users
  * because the session is only set by the server itself if successfully
@@ -117,8 +117,6 @@ class Manager extends CoreController
 		}
 	}
 
-
-
 	/**
 	 * Views the selected by getting the html blob from the database and printing
 	 * it out on the html
@@ -170,25 +168,6 @@ class Manager extends CoreController
 					header('location:' . $_SERVER['HTTP_REFERER']);
 				}
 			}
-		}
-		else
-		{
-			header('location:' . URL . 'message/unauthorized');
-		}
-	}
-
-	/**
-	 * Destroys the session and refresh page.
-	 * If no session is set, redirects to problem controller
-	 * Manager page should then not be possible to access due to session_destroyed.
-	 */
-	public function logout()
-	{
-		if (isset($_SESSION['user']))
-		{
-			$_SESSION = array();
-			session_destroy();
-			header('location:' .URL . 'start/manager');
 		}
 		else
 		{

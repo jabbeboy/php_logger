@@ -1,19 +1,13 @@
 <?php
 
 /**
- *
- *
+ * The Authentication controller.
+ * Handles the login, logout, but could also be renamed
+ * for account controller if registration existed
  */
 class Authentication extends CoreController
 {
-	public function index()
-	{
-		require APP . 'view/header.php';
-		require APP . 'view/start/login.php';
-		require APP . 'view/footer.php';
-	}
-
-	/**
+    /**
 	 * Get the requested user from the database and authenticates by username and password
 	 * Catches exceptions if the authentication fails
 	 * Redirects to problem view if any error occurs.
@@ -92,7 +86,7 @@ class Authentication extends CoreController
 		{
 			$_SESSION = array();
 			session_destroy();
-			header('location:' .URL . 'authentication');
+			header('location:' .URL . 'start/manager');
 		}
 		else
 		{

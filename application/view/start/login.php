@@ -1,3 +1,4 @@
+<!-- Login Form -->
 <div class="container">
     <h2>Log Manager</h2>
     <p><i>Log Manager requires you to be logged in if you want to access.</i></p>

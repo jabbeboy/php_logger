@@ -1,4 +1,4 @@
-<!-- Shows single log -->
+<!-- View Log Form -->
 <div class="container">
     <a href="<?php echo URL . 'manager/menu' ?>"><i>Go back</i></a>
     <h2>View Log</h2>

@@ -1,4 +1,4 @@
-<!-- Manager Home -->
+<!-- Manager Index -->
 <div class="container">
     <a href="<?php echo URL; ?>authentication/logout"><i>Logout</i></a>
     <h2>Log Manager</h2>

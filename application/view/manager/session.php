@@ -1,4 +1,4 @@
-<!-- Session Logs --->
+<!-- Session Log --->
 <div class="container">
 	<a href="<?php echo URL . 'manager/menu'; ?>"><i>Go back</i></a>
 	<h2>Logs by Session</h2>
