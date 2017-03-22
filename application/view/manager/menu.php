@@ -10,7 +10,7 @@
             <thead style="background-color: #ddd; font-weight: bold;">
             <tr>
                 <td>View</td>
-                <td>Select by all</td>
+                <td>Select by All</td>
             </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
             <thead style="background-color: #ddd; font-weight: bold;">
             <tr>
                 <td>View</td>
-                <td>Select by session</td>
+                <td>Select by Session</td>
             </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
             <thead style="background-color: #ddd; font-weight: bold;">
             <tr>
                 <td>View</td>
-                <td>Select by ip-address</td>
+                <td>Select by IP-Address</td>
             </tr>
             </thead>
             <tbody>

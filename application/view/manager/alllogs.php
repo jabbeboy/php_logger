@@ -13,7 +13,7 @@
 				<td>View</td>
 				<td>Date</td>
 				<td>Session</td>
-				<td>Address</td>
+				<td>IP-Address</td>
 				<td>Delete</td>
 			</tr>
 			</thead>
