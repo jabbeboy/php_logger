@@ -11,5 +11,5 @@
     <h1 id="header">PHP Logger</h1>
     <div class="navigation">
         <a href="<?php echo URL; ?>">Start</a>
-        <a href="<?php echo URL; ?>start/manager">Log Manager</a>
+        <a href="<?php echo URL; ?>authentication">Log Manager</a>
     </div>

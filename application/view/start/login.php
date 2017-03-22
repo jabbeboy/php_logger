@@ -2,7 +2,7 @@
     <h2>Log Manager</h2>
     <p><i>Log Manager requires you to be logged in if you want to access.</i></p>
     <div class="box">
-        <form id="login-form" class="text-left" action="<?php echo URL ?>start/login" method="POST">
+        <form id="login-form" class="text-left" action="<?php echo URL ?>authentication/login" method="POST">
 
             <label>Username</label>
             <input type="text" id="login_username" value="" name="login_username" required>

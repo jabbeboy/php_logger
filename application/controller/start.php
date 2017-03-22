@@ -17,23 +17,6 @@ class Start extends CoreController
     }
 
     /**
-     * Login page for manager view
-     */
-    public function manager()
-    {
-        if (isset($_SESSION['user']))
-        {
-            header('location:' . URL . 'manager');
-        }
-        else
-        {
-            require APP . 'view/header.php';
-            require APP . 'view/start/login.php';
-            require APP . 'view/footer.php';
-        }
-    }
-
-    /**
      * Get the requested user from the database and authenticates by username and password
      * Catches exceptions if the authentication fails
      * Redirects to problem view if any error occurs.

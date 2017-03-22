@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Class Controller
+ * CoreController
+ * Opens up a database connection and loads the necessary models
+ * Other controllers extends this controller to inherit the connection and objects
  */
 class CoreController
 {
