@@ -12,8 +12,8 @@
 			<tr>
 				<td>Id</td>
 				<td>View</td>
-				<td>Date</td>
-				<td>Session</td>
+				<td>Date and Time</td>
+				<td>Session Id</td>
 				<td>IP-Address</td>
 				<td>Delete</td>
 			</tr>

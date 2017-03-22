@@ -28,7 +28,7 @@
             <thead style="background-color: #ddd; font-weight: bold;">
             <tr>
                 <td>View</td>
-                <td>Select by Session</td>
+                <td>Select by Session Id</td>
             </tr>
             </thead>
             <tbody>
