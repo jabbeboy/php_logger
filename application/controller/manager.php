@@ -82,10 +82,15 @@ class Manager extends CoreController
 			if (isset($session_id))
 			{
 				$logs = $this->dbModel->getLogsBySession($session_id);
+
+                require APP . 'view/header.php';
+                require APP . 'view/manager/session.php';
+                require APP . 'view/footer.php';
 			}
-			require APP . 'view/header.php';
-			require APP . 'view/manager/session.php';
-			require APP . 'view/footer.php';
+            else
+            {
+                header('location:' . URL . 'message');
+            }
 		}
 		else
 		{
@@ -106,10 +111,15 @@ class Manager extends CoreController
 			if (isset($address))
 			{
 				$logs = $this->dbModel->getLogsByAddress($address);
+
+                require APP . 'view/header.php';
+                require APP . 'view/manager/address.php';
+                require APP . 'view/footer.php';
 			}
-			require APP . 'view/header.php';
-			require APP . 'view/manager/address.php';
-			require APP . 'view/footer.php';
+            else
+            {
+                header('location:' . URL . 'message');
+            }
 		}
 		else
 		{
@@ -131,12 +141,17 @@ class Manager extends CoreController
 			{
 				$session_id = strtok($sessionAndId, '=');
 				$id = substr($sessionAndId, strpos($sessionAndId, '=') + 1);
-			}
-			$log = $this->dbModel->getLogHtml($session_id, $id);
 
-			require APP . 'view/header.php';
-			require APP . 'view/manager/viewlog.php';
-			require APP . 'view/footer.php';
+				$log = $this->dbModel->getLogHtml($session_id, $id);
+
+                require APP . 'view/header.php';
+                require APP . 'view/manager/viewlog.php';
+                require APP . 'view/footer.php';
+			}
+            else
+            {
+                header('location:' . URL . 'message');
+            }
 		}
 		else
 		{
@@ -167,7 +182,15 @@ class Manager extends CoreController
 				{
 					header('location:' . $_SERVER['HTTP_REFERER']);
 				}
+				else
+                {
+                    header('location:' . URL . 'message');
+                }
 			}
+			else
+            {
+                header('location:' . URL . 'message');
+            }
 		}
 		else
 		{
